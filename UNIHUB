@@ -15,25 +15,23 @@ local autoFarmToggle = Tab:AddToggle({
     Callback = function(Value)
         if Value then
             while true do
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 1369.09009)
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-51.5656433, 65.0000458, 1369.09009))
                 wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 2139.09009)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 2909.09009)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 3679.09009)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 4449.08984)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 5219.08984)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 5989.08984)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 6759.08984)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-51.5656433, 65.0000458, 7529.08984)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-55.7065125, -358.739624, 9492.35645)
+                
+                local TweenService = game:GetService("TweenService")
+                local targetCFrame = CFrame.new(Vector3.new(-51.5656433, 65.0000458, 7529.08984))
+                
+                local tweenInfo = TweenInfo.new(15, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0)
+
+                local goal = {}
+                goal.CFrame = targetCFrame
+
+                local humanoidRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+                local tween = TweenService:Create(humanoidRootPart, tweenInfo, goal)
+                tween:Play()
+                
+                wait(16)
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-55.7065125, -358.739624, 9492.35645))
                 wait(18)
             end
         end
